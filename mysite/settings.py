@@ -26,7 +26,7 @@ SECRET_KEY = '8qhpc0)2(i69_lsgido(uiit0k19!cf=&$yxf-h&(k_sl1m8i6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
