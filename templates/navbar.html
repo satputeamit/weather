@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+
+
+  <a class="navbar-brand" href="{% url 'climate:home' %}"> <img class="mr-2"style="height:40px;wigth:40px"src="{% static 'img/weatherfrontapp_logo.png' %}" alt="no">  Weather Report</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav ml-auto ">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'climate:home' %}">Home</a>
+      </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'climate:upload' %}">Upload Records</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'climate:login' %}">Login</span></a>
+      </li>
+      {% endif %}
+
+    </ul>
+
+  </div>
+    </div>
+</nav>

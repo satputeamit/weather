@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h4>  Region Name :  {{country.name}}</h4>
+<p>This is the weather report from 1910 of {{country.name}} region.</p>
+<hr>
+<div class="row ">
+  <div class="col py-2">
+    <a class="btn btn-danger py-4"  style="height:300px;width:100%" href="{% url 'climate:sub_detail' pk=country.id %}">
+      Max Temperature
+      <br>  <br>
+      <img style="height:150px;width:150px" src="{% static 'img/max.png' %}" alt="">
+    </a>
+
+  </div>
+  <div class="col py-2">
+
+    <a class="btn btn-info py-4"  style="height:300px;width:100%" href="{% url 'climate:min_detail' pk=country.id %}">
+      Min Temperature
+      <br>  <br>
+      <img style="height:150px;width:150px" src="{% static 'img/min.png' %}" alt="">
+    </a>
+
+  </div>
+  <div class="col py-2">
+
+    <a class="btn btn-primary py-4" style="height:300px;width:100%" href="{% url 'climate:mean_detail' pk=country.id %}">
+      Mean Temperature
+      <br>  <br>
+      <img style="height:150px;width:150px" src="{% static 'img/mean.png' %}" alt="">
+    </a>
+
+  </div>
+  <div class="col py-2">
+
+    <a class="btn btn-warning py-4" style="height:300px;width:100%" href="{% url 'climate:sun_detail' pk=country.id %}">
+      Sunshine
+      <br>  <br>
+      <img style="height:150px;width:150px" src="{% static 'img/sunny.png' %}" alt="">
+    </a>
+
+  </div>
+  <div class="col py-2">
+
+    <a class="btn btn-success py-4" style="height:300px;width:100%" href="{% url 'climate:rain_detail' pk=country.id %}">
+      Rainfall
+      <br>
+      <br>
+      <img  style="height:150px;width:150px" src="{% static 'img/rain.png' %}" alt="">
+     </a>
+  </div>
+
+</div>
+
+{% endblock  %}

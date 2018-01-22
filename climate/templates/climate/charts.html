@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12 py-3">
+    <h3>Region : {{country.name}}</h3>
+    <h4>Year   : {{year}}</h4>
+    <p>Chart for {{max}}</p>
+    {% ifequal 'Max Temperature' max %}
+    <p> <a href="{% url 'climate:sub_detail' pk=country.id %}">back to list</a> </p>
+    {% endifequal %}
+    {% ifequal 'Min Temperature' max %}
+    <p> <a href="{% url 'climate:min_detail' pk=country.id %}">back to list</a> </p>
+    {% endifequal %}
+    {% ifequal 'Mean Temperature' max %}
+    <p> <a href="{% url 'climate:mean_detail' pk=country.id %}">back to list</a> </p>
+    {% endifequal %}
+    {% ifequal 'Sunshine(Total hours)' max %}
+    <p> <a href="{% url 'climate:sun_detail' pk=country.id %}">back to list</a> </p>
+    {% endifequal %}
+    {% ifequal 'Rainfall (mm)' max %}
+    <p> <a href="{% url 'climate:rain_detail' pk=country.id %}">back to list</a> </p>
+    {% endifequal %}
+    <canvas id="myChart" width="500px" height="170px"></canvas>
+  </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+        datasets: [{
+            label: '',
+            data: {{data}},
+
+
+            backgroundColor: [
+               'rgba(255, 99, 132, 0.3)',
+               'rgba(54, 162, 235, 0.3)',
+               'rgba(255, 206, 86, 0.3)',
+               'rgba(75, 192, 192, 0.3)',
+               'rgba(153, 102, 255, 0.3)',
+               'rgba(255, 159, 64, 0.3)',
+               'rgba(255, 99, 132, 0.3)',
+               'rgba(54, 162, 235, 0.3)',
+               'rgba(255, 200, 86, 0.3)',
+               'rgba(75, 192, 12, 0.3)',
+               'rgba(153, 12, 255, 0.3)',
+               'rgba(255, 159, 69, 0.3)'
+           ],
+           borderColor: [
+               'rgba(255,99,132,1)',
+               'rgba(54, 162, 235, 1)',
+               'rgba(255, 206, 86, 1)',
+               'rgba(75, 192, 192, 1)',
+               'rgba(153, 102, 255, 1)',
+               'rgba(255, 159, 64, 1)',
+               'rgba(255, 99, 132, 1)',
+               'rgba(54, 162, 235, 1)',
+               'rgba(255, 200, 86, 1)',
+               'rgba(75, 192, 12, 1)',
+               'rgba(153, 12, 255, 1)',
+               'rgba(255, 159, 69, 1)'
+           ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+{% endblock %}

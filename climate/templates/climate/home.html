@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+      <div class="col">
+        <h1 align='center'>UK and regional series</h1>
+        <p align='center'>Weather report dataset from 1910...</p>
+      </div>
+    </div>
+    <div class="row py-3">
+        {% for i in temp %}
+            <div class="col-md-4 ">
+              <a href="{% url 'climate:detail' pk=i.pk %}">
+                <div class="alert alert-success " style="align:center;height:120px;width:100%" role="alert">
+                   <h3>{{i.name}}</h3>
+                   <p >Get detail weather information of {{i.name}} region.</p>
+
+
+                </div>
+              </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- <div class="row py-3">
+        {% for i in temp %}
+          <div class="col-md-4 py-2">
+            <a href="{% url 'climate:detail' pk=i.pk %}" class="btn btn-success py-4" style="height:100px;width:100%"><span class="pt-3">{{i.name}}</span> </a>
+          </div>
+        {% endfor %}
+    </div> -->
+
+{% endblock  %}

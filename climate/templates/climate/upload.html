@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Click this button ,It will automatically update new record if it exists..!</p>
+<a href="{% url 'climate:update' %}" class="btn btn-success">Update New Record</a>
+{% endblock %}
